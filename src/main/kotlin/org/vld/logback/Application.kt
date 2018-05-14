@@ -19,18 +19,27 @@ open class Application : CommandLineRunner {
     @Autowired
     private lateinit var logging: Logging
 
-    @Value("\${internal.property}")
-    private lateinit var internalProperty: String
+    @Value("\${common.internal.property}")
+    private lateinit var commonInternalProperty: String
 
-    @Value("\${external.property}")
-    private lateinit var externalProperty: String
+    @Value("\${common.external.property}")
+    private lateinit var commonExternalProperty: String
+
+    @Value("\${profile.internal.property}")
+    private lateinit var profileInternalProperty: String
+
+    @Value("\${profile.external.property}")
+    private lateinit var profileExternalProperty: String
 
     override fun run(vararg args: String?) {
         logger.debug("ok")
         logging.logAll()
 
-        logger.info("internal.property = $internalProperty")
-        logger.info("external.property = $externalProperty")
+        logger.info("common.internal.property = $commonInternalProperty")
+        logger.info("common.external.property = $commonExternalProperty")
+
+        logger.info("profile.internal.property = $profileInternalProperty")
+        logger.info("profile.external.property = $profileExternalProperty")
     }
 }
 

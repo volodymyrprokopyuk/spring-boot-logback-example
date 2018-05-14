@@ -1,2 +1,7 @@
-external:
-    property: External Property
+common:
+    external:
+        property: Common External Property
+
+profile:
+    external:
+        property: Default External Property

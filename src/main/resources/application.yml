@@ -1,4 +1,9 @@
 logging.config: config/logback.xml
 
-internal:
-    property: Internal Property
+common:
+    internal:
+        property: Common Internal Property
+
+profile:
+    internal:
+        property: Default Internal Property
