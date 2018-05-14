@@ -1,3 +1,4 @@
+---
 logging.config: config/logback.xml
 
 common:
