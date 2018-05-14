@@ -3,6 +3,7 @@ package org.vld.logback
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -18,9 +19,18 @@ open class Application : CommandLineRunner {
     @Autowired
     private lateinit var logging: Logging
 
+    @Value("\${internal.property}")
+    private lateinit var internalProperty: String
+
+    @Value("\${external.property}")
+    private lateinit var externalProperty: String
+
     override fun run(vararg args: String?) {
         logger.debug("ok")
         logging.logAll()
+
+        logger.info("internal.property = $internalProperty")
+        logger.info("external.property = $externalProperty")
     }
 }
 
