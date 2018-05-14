@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.PropertySource
 import org.vld.logback.logging.Logging
 
 @SpringBootApplication
+@PropertySource(value = ["file:config/configuration.properties", "classpath:configuration.properties"])
 open class Application : CommandLineRunner {
 
     companion object {
@@ -31,6 +33,12 @@ open class Application : CommandLineRunner {
     @Value("\${profile.external.property}")
     private lateinit var profileExternalProperty: String
 
+    @Value("\${extra.internal.property}")
+    private lateinit var extraInternalProperty: String
+
+    @Value("\${extra.external.property}")
+    private lateinit var extraExternalProperty: String
+
     override fun run(vararg args: String?) {
         logger.debug("ok")
         logging.logAll()
@@ -40,6 +48,9 @@ open class Application : CommandLineRunner {
 
         logger.info("profile.internal.property = $profileInternalProperty")
         logger.info("profile.external.property = $profileExternalProperty")
+
+        logger.info("extra.internal.property = $extraInternalProperty")
+        logger.info("extra.external.property = $extraExternalProperty")
     }
 }
 
